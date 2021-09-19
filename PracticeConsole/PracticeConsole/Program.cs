@@ -1,5 +1,5 @@
 ﻿using System;
-using static System.Console; //fully qualified namespace
+//using static System.Console; //fully qualified namespace
 
 namespace PracticeConsole
 {
@@ -7,9 +7,11 @@ namespace PracticeConsole
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
             //System.Console.WriteLine("Hello World!");
-            WriteLine("Hello World!");
+            //WriteLine("Hello World!");
+
+
         }
     }
 }
