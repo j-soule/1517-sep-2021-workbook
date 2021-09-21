@@ -11,12 +11,14 @@ namespace PracticeConsole.Data
         //An instance in this class will describe an employment of a job
         //the characterisitics will be
         //Title, supervisory level, years of employment within that job
-
+        Employment(string Title,  double years);
         public string Title { get; set; }
 
         //using an enum to declare a variable
         public SupervisoryLevel Level { get; set; }
 
         public double Years { get; set; }
+
+        public void 
     }
 }

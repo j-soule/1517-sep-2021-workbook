@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace PracticeConsole.Data
 {
-    class Person
+    public class Person 
     {
         //each instance of this class will represent an individual
         //This class will defore the following characteristics of a person:
         //FirstName, LastName, list of employment positions
+
+        public List<Employment>
     }
 }
