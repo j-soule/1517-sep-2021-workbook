@@ -39,7 +39,7 @@ namespace PracticeConsole
 
 
             };
-            job1.SetEmployeeRespnsibility(SupervisoryLevel.Owner);
+            job1.SetEmployeeResponsibility(SupervisoryLevel.Owner);
             jobs.Add(job1); //add to the jobs List<T> where T is employmwnt
 
             Person me = new Person()
@@ -56,6 +56,15 @@ namespace PracticeConsole
             foreach (Employment item in me.EmploymentPositions)
             {
                 Console.WriteLine($"\t{item.ToString()}");
+            }
+
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"************\n{ex.Message}\n******************");
             }
 
         }
