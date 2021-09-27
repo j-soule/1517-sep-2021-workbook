@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace PracticeConsole.Data
 {
     //supervisory level is the data type name of the enum
+    //the data type of an enum is a whole number: default type of int
     public enum SupervisoryLevel //to create enum, add new class and change
     {
         
