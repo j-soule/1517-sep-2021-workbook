@@ -12,6 +12,8 @@ namespace PracticeConsole.Data
         //This class will defore the following characteristics of a person:
         //FirstName, LastName, list of employment positions
 
+        //This class defintion is an example of class Composition
+
         private string _FirstName;
         private string _LastName;
 
@@ -38,7 +40,7 @@ namespace PracticeConsole.Data
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("Persons first name is required");
+                    throw new ArgumentNullException("Persons last name is required");
                 }
                 else
                 {
@@ -46,10 +48,11 @@ namespace PracticeConsole.Data
                 }
             }
         }
+        public ResidentAddress Address;
 
         //List<Employment> property
         //this is an example of a Composition class property
-        //thsi proerty makes use of another programmer-decalred data type: Employment
+        //this property makes use of another programmer-decalred data type: Employment
         //one could have many properties within your class definition that uses
         // multiple different programmer-declared class data types
         //this differs from the concept of inheritance where the class defintion is extended to 
@@ -67,11 +70,12 @@ namespace PracticeConsole.Data
 
         public Person() { }
 
-        public Person(string firstname, string lastname, List<Employment> positions)
+        public Person(string firstname, string lastname, List<Employment> positions, ResidentAddress Address)
         {
             FirstName = firstname;
             LastName = lastname;
             EmploymentPositions = positions;
+            this.Address = Address;
         }
     }
 }

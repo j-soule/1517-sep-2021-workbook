@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PracticeConsole
+namespace PracticeConsole.Data
 {
     class EmploymentReadOnly
     {
@@ -12,6 +12,13 @@ namespace PracticeConsole
         public readonly string Title;
         public readonly SupervisoryLevel Level;
         public readonly double Years;
+        //in a readonly class scenario you will not likely find any
+        //property that will allow internal data to be altered via hte property.
+        //you may find behaviours that will allow changes to the data, rememebering
+        //that internal logic can make cjnages
+        //however you still may have properties in your class definition BUT they
+        //consists of only get components in teh property
+
 
         //becasue your data is read only, you need to have a pathway
         //   for data to come into the class instance
@@ -23,6 +30,7 @@ namespace PracticeConsole
             //  be code in the constructor
             //In this example, you will be using a method from a static class that
             //  we have coded called Utilities
+            
             if (Utilities.IsEmpty(title))
             {
                 throw new Exception("Job title is required.");
