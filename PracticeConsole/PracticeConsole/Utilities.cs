@@ -7,7 +7,7 @@ using PracticeConsole.Data;
 
 namespace PracticeConsole
 {
-    class Utilities
+    static class Utilities
     {
         
         //these types of class should not hold and retain data

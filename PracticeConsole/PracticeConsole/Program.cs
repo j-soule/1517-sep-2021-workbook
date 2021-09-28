@@ -22,7 +22,7 @@ namespace PracticeConsole
             //a value to the Level property
             //Instead use the method provided which will assign the
             //given arguemnt value to the Level property internally
-            job1.SetEmployeeResponsibility(SupervisoryLevel.TeamLeader);
+            job1.SetEmployeeResonsibility(SupervisoryLevel.TeamLeader);
             job1.Years = 7.4;
 
             jobs.Add(job1); //add to the jobs List<T> where T is employmwnt
@@ -56,7 +56,7 @@ namespace PracticeConsole
 
 
             };
-            job1.SetEmployeeResponsibility(SupervisoryLevel.Owner);
+            job1.SetEmployeeResonsibility(SupervisoryLevel.Owner);
             jobs.Add(job1); //add to the jobs List<T> where T is employmwnt
 
           

@@ -7,7 +7,7 @@ using PracticeConsole.Data;
 
 namespace PracticeConsole.Data
 {
-   class Employment
+   public class Employment
     {
         //An instance in this class will describe an employment of a job
         //the characterisitics will be
@@ -43,7 +43,7 @@ namespace PracticeConsole.Data
         // c) code a get 'method'
         // d) optinally code a set
 
-        Employment(string Title,  double Years);
+        
         public string Title
         {
             get
@@ -86,10 +86,15 @@ namespace PracticeConsole.Data
         //will only allow an outside  user (Program) to access the associate value
         //the private set must be done within the class either in a constructor or a behaviour
         //of the class
-        public SupervisoryLevel Level { get; set; }
-        // the property years could be coded as either a fully implemented propert (as shown) or
+        public SupervisoryLevel Level { get; private set; }
+
+        // the property years could be coded as either a fully implemented property (as shown) or
         //as an auto-implemented property
-        public double Years { get; set; }
+        public double Years 
+        {
+            get { return _Years; }
+            set { _Years = value; }
+        }
 
         //Constructors
         //is to initialize the created instance (physical obj) of the class (conceptual definition)
@@ -113,7 +118,7 @@ namespace PracticeConsole.Data
             //constructor body
             //you could assign literal values to your properties within this constructor
             Level = SupervisoryLevel.Entry; //0
-            Title = null;
+            Title = "Unknown";
         }
  
         //Greedy constructor
