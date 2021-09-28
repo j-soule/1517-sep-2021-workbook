@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PracticeConsole.Data;
 
 namespace PracticeConsole.Data
 {
     class EmploymentReadOnly
     {
-         
+
         public readonly string Title;
         public readonly SupervisoryLevel Level;
-        public readonly double Years;
+
+        //this property "mimics" a readonly field
+        //it has a public get
+        //it has a private set
+        //the private set is used within this class definition only
+
+        public double Years { get; private set; } // can read from years, but cannot write to it
+
         //in a readonly class scenario you will not likely find any
         //property that will allow internal data to be altered via hte property.
         //you may find behaviours that will allow changes to the data, rememebering
-        //that internal logic can make cjnages
+        //that internal logic can make chnages
         //however you still may have properties in your class definition BUT they
-        //consists of only get components in teh property
+        //consists of only get components in the property OR a public get component
+        //with a private set component
 
 
         //becasue your data is read only, you need to have a pathway
@@ -30,7 +39,7 @@ namespace PracticeConsole.Data
             //  be code in the constructor
             //In this example, you will be using a method from a static class that
             //  we have coded called Utilities
-            
+
             if (Utilities.IsEmpty(title))
             {
                 throw new Exception("Job title is required.");
@@ -39,16 +48,19 @@ namespace PracticeConsole.Data
             {
                 Title = title;
             }
+
             Level = level;
             if (Utilities.IsPositive(years))
             {
-                throw new Exception("Job years needs to be 0 or greater.");
+                Years = years;
+
             }
             else
             {
-                Years = years;
+                throw new Exception("Job years needs to be 0 or greater.");
             }
 
-        
+
+        }
     }
 }

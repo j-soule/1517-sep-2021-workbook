@@ -13,12 +13,15 @@ namespace PracticeConsole
 
             //declared and load Employment instance seperately
             //default constructor
+
             Employment job1 = new Employment();
+
             //property set
             job1.Title = "Lab Assistant";
             //the Level property has a private set so you cannot directly assign
             //a value to the Level property
-            //Instead use the method provided which will assign the given arguemnt value to the Level property internally
+            //Instead use the method provided which will assign the
+            //given arguemnt value to the Level property internally
             job1.SetEmployeeResponsibility(SupervisoryLevel.TeamLeader);
             job1.Years = 7.4;
 
@@ -31,8 +34,8 @@ namespace PracticeConsole
             job1 = new Employment("Research", SupervisoryLevel.TeamMember, 5.8);
             jobs.Add(job1); //add to the jobs List<T> where T is employmwnt
 
-            //decalre and load Employmwnt instance using the object instantiation
-            //sourse
+            //decalre and load Employment instance using the object instantiation
+            //source
             //https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/how-to-initialize-objects-by-using-an-object-initializer
             //object initalizer
             //declaring an instance using object instantiation does so without
@@ -46,7 +49,7 @@ namespace PracticeConsole
             //defintion or not
 
 
-            job1 = new Employment()
+            job1 = new Employment
             {
                 Title = "Gander Cooking Club",
                 Years = 1.2
@@ -59,7 +62,7 @@ namespace PracticeConsole
           
             // struct sample
             //remember structs are value types, not refrence types
-            //can initalize via constructor or object initalizer
+            //can initalize via constructor or object initalizer (shown)
             //ResidentAddress address = new ResidentAddress(123, "Maple St.", null, null, "Edmonton", "AB");
 
             ResidentAddress address = new ResidentAddress

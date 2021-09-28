@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PracticeConsole.Data;
 
 namespace PracticeConsole.Data
 {
@@ -68,7 +69,10 @@ namespace PracticeConsole.Data
         public List<Employment> EmploymentPositions { get; set; }
         public Employment CurrentPosition { get; set; }
 
-        public Person() { }
+        public Person() 
+        {
+            EmploymentPositions = new List<Employment>();
+        }
 
         public Person(string firstname, string lastname, List<Employment> positions, ResidentAddress Address)
         {
@@ -76,6 +80,7 @@ namespace PracticeConsole.Data
             LastName = lastname;
             EmploymentPositions = positions;
             this.Address = Address;
+            EmploymentPositions = new List<Employment>();
         }
     }
 }

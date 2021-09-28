@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PracticeConsole.Data;
 
 namespace PracticeConsole.Data
 {
-    public class Employment
+   class Employment
     {
         //An instance in this class will describe an employment of a job
         //the characterisitics will be
         //Title, supervisory level, years of employment within that job
+
+        
 
         //the 4 components of a class definition are
         //datafield
@@ -40,7 +43,7 @@ namespace PracticeConsole.Data
         // c) code a get 'method'
         // d) optinally code a set
 
-        Employment(string Title,  double years);
+        Employment(string Title,  double Years);
         public string Title
         {
             get
