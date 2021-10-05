@@ -73,6 +73,9 @@ namespace PracticeConsole.Data
                 }
             }
         }
+
+        
+
         //Auto implemented Properties
         //these properties are differnt only in syntax
         //each property is responsible for a single piece of data
@@ -153,5 +156,20 @@ namespace PracticeConsole.Data
             //in this example the return data values in a comma seperator string
             return $"{Title},{Level},{Years}";
         }
+
+        public static Employment Parse(string text)
+        {
+            string[] parts = text.Split(',');
+            if (parts.Length != 3)
+            {
+                throw new System.FormatException("Input string is not in the correct CSV format for an EMployment object");
+            }
+            //convert teh string array elements into the appropriate data types of the
+            //Employment class
+            string title = parts[0];
+            SupervisoryLevel level = (SupervisoryLevel)Enum.Parse(typeof(SupervisoryLevel), parts[1]);
+            double years = double.Parse(parts[2]);
+            return new Employment(title, level, years); //use a greedy constructor
+        } 
     }
 }

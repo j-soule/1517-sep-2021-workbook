@@ -1,14 +1,170 @@
 ﻿using System;
 using System.Collections.Generic;
 using PracticeConsole.Data;
+using System.IO;    //File IO
 //using static System.Console; //fully qualified namespace
 
 namespace PracticeConsole
 {
     class Program
     {
+        private const string ArrayFileName = "IntData.dat";
+        private const string CSVFileName = "EmploymentData.dat";
         static void Main(string[] args)
         {
+
+            //ArrayReview();
+            int[] inputArray = ReadArrayFile();
+            PrintArray(inputArray, inputArray.Length, "File IO input array");
+            CreateEmploymentData();
+            ReadCSVFile();
+        }
+                
+
+            public static int[] ReadArrayFile()
+            {
+                //read all the record lines from the input file
+                // each line is treated like a string
+                //tje return data tpe of RealAllLines(filename) is an 
+                //array of stings
+                string[] fileinput = File.ReadAllLines(ArrayFileName);
+
+                //create an int array of a specific size
+                //create the array with the number of lines read size
+                //the array property .Length will indicate the number of lines read
+                int[] myArray = new int[fileinput.Length];
+
+                //move string data into array
+
+                for (int i = 0; i < fileinput.Length; i++)
+                {
+                    //assumption is data in file is vaild
+                    //int is astruct of system.int32
+                    //.Parse is a method within the struct
+                    //calling struct methods requires structname.methodname
+                    myArray[i] = int.Parse(fileinput[i]);
+                    PrintArray(inputArray, inputArray.Length, "File IO input array");
+                    CreateEmploymentData();
+                }
+                return myArray;
+            }
+
+            public static void ReadCSVFile()
+            {
+                string[] fileinput = File.ReadAllLines(CSVFileName);
+                List<Employment> employments = new List<Employment>();
+                Employment anEmployment = null;
+                foreach (string item in fileinput)
+                {
+                    //PArse the record line into teh serperate values of an 
+                    //Employment instance
+                    //using the same concept of int.Parse, let us create
+                    //a .Parse for our developer defined data type
+                    //input will be a string
+                    //output will be an instance of employment
+                    //because we are using classname.method the methog will
+                    //be a static method within the specific classname
+
+                    //employments.Add(Employment.Parse(item));
+
+                    anEmployment = Employment.Parse(item);
+                    employments.Add(anEmployment);
+                }
+
+                Console.WriteLine($"Lines read: {employments.Count}");
+                foreach
+               
+            }
+
+            private static void CreateEmploymentData()
+            {
+                List<Employment> employments = new List<Employment>();
+                employments.Add(new Employment("Instructor", SupervisoryLevel.TeamLeader, 35.5));
+                employments.Add(new Employment("System Developer", SupervisoryLevel.TeamMember, 7.65));
+                employments.Add(new Employment("LAb Tech", SupervisoryLevel.TeamLeader, 3.5));
+                employments.Add(new Employment("Student Advisor", SupervisoryLevel.TeamLeader, 3.5));
+
+                List<string> csvline = new List<string>();
+                foreach(var item in employments)
+                {
+                    csvline.Add(item.ToString());
+
+                }
+                //write out all the csv lines
+                File.WriteAllLines(CSVFileName, csvlines);
+
+            }
+
+        
+
+
+
+
+        public static void ArrayReview()
+        {
+            //Declare a single-dimensional array size 5
+            int lsArray1 = 0;
+            int lsArray2 = 0;
+
+            int lsArray3 = 0;
+
+            int[] array1 = new int[5];
+            PrintArray(array1, 5, "declare int array size 5");
+            lsArray1 = 0;
+
+            //Declare and set array elements
+            int[] array2 = new int[] { 1, 2, 3, 4, 5 };
+            PrintArray(array2, 5, "declare and set int array size 5");
+            lsArray2 = 5;
+
+            //alternate syntax
+            int[] array3 = { 1, 2, 3, 4, 5 };
+            PrintArray(array3, 5, "alternative declare and set int array size 5");
+            lsArray3 = 5;
+
+            //add an value to array1
+            //compare physical size to logical size, is there room
+            if (array1.Length > lsArray1)
+            {
+                Random rnd = new Random();
+                int position = rnd.Next(0, 5);
+                array1[position] = 15;
+                lsArray1++;
+            }
+            PrintArray(array1, 5, "declare int array size 5");
+
+            //remove element 3 from array2
+            //determine the logic size
+            //index of the element to remove
+            array2[2] = array2[lsArray2 - 1];
+            lsArray2--;
+            PrintArray(array2, 5, "declare and set int array size 5");
+
+            string filerecord = "don, 1986, edmonton, ab";
+            string[] values = filerecord.Split(',');
+            int i = 1;
+            Console.WriteLine($"Number of values is {values.Length}");
+            foreach (var item in values)
+            {
+                Console.WriteLine($"item {i} is {item}");
+                i++;
+            }
+
+        }
+
+        public static void PrintArray(int[] array, int logicalsize, string comment)
+        {
+            Console.WriteLine($"{comment}\n");
+            for (int i = 0; i < logicalsize; i++)
+            {
+                Console.Write($"{array[i]}, ");
+            }
+            Console.WriteLine("\n");
+        }
+        public static void ClassObjectReview()
+        {
+
+
             List<Employment> jobs = new List<Employment>();
 
             //declared and load Employment instance seperately
