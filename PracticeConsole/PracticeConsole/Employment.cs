@@ -31,9 +31,10 @@ namespace PracticeConsole.Data
 
         private string _Title;
         private double _Years;
-        private SupervisoryLevel Level;
 
-        //properties
+        //private SupervisoryLevel Level;
+
+        //Properties
         //these are access techniques to retrieve or set data in your class
         //without directly touching the storage field
 

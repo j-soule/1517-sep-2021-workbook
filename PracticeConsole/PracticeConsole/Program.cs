@@ -53,7 +53,7 @@ namespace PracticeConsole
             {
                 Title = "Gander Cooking Club",
                 Years = 1.2
-
+                
 
             };
             job1.SetEmployeeResonsibility(SupervisoryLevel.Owner);
@@ -99,7 +99,7 @@ namespace PracticeConsole
             //to your new instance
             EmploymentReadOnly altJob = new EmploymentReadOnly("Art Director",
                 SupervisoryLevel.Supervisor, 4.5);
-            Console.WriteLine($"\n\n*****\nEmployment ReadOnly\n\t{altJob.Title},{altJob.Level},{altJob.Years}\n*****\n")
+            Console.WriteLine($"\n\n*****\nEmployment ReadOnly\n\t{altJob.Title},{altJob.Level},{altJob.Years}\n*****\n");
 
             Employment badjob;
             Person badperson;
