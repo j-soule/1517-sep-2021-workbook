@@ -13,14 +13,14 @@ namespace PracticeConsole
         static void Main(string[] args)
         {
 
-            //ArrayReview();
+            ArrayReview();
             int[] inputArray = ReadArrayFile();
             PrintArray(inputArray, inputArray.Length, "File IO input array");
             CreateEmploymentData();
             ReadCSVFile();
         }
                 
-
+            
             public static int[] ReadArrayFile()
             {
                 //read all the record lines from the input file
@@ -43,8 +43,8 @@ namespace PracticeConsole
                     //.Parse is a method within the struct
                     //calling struct methods requires structname.methodname
                     myArray[i] = int.Parse(fileinput[i]);
-                    PrintArray(inputArray, inputArray.Length, "File IO input array");
-                    CreateEmploymentData();
+                    
+                    
                 }
                 return myArray;
             }
@@ -72,7 +72,10 @@ namespace PracticeConsole
                 }
 
                 Console.WriteLine($"Lines read: {employments.Count}");
-                foreach
+                foreach(var line in employments)
+                {
+                    Console.WriteLine($"{line.ToString()}");
+                }
                
             }
 
@@ -84,10 +87,10 @@ namespace PracticeConsole
                 employments.Add(new Employment("LAb Tech", SupervisoryLevel.TeamLeader, 3.5));
                 employments.Add(new Employment("Student Advisor", SupervisoryLevel.TeamLeader, 3.5));
 
-                List<string> csvline = new List<string>();
+                List<string> csvlines = new List<string>();
                 foreach(var item in employments)
                 {
-                    csvline.Add(item.ToString());
+                    csvlines.Add(item.ToString());
 
                 }
                 //write out all the csv lines
