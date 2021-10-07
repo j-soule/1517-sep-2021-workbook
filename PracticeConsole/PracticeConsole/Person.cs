@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using PracticeConsole.Data;
 
@@ -49,6 +50,11 @@ namespace PracticeConsole.Data
                 }
             }
         }
+
+        //this is afield not a property
+        //JSON Serialization has no problem in creating the named pairs for
+        //the fieild. JSON Deserialization however DOES have a problem fields
+        [JsonInclude]
         public ResidentAddress Address;
 
         //List<Employment> property

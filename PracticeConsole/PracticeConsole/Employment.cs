@@ -319,5 +319,28 @@ namespace PracticeConsole.Data
             double years = double.Parse(parts[2]);
             return new Employment(title, level, years);
         }
+
+        public static bool TryParse(string text, out Employment result)
+        {
+            bool valid = false;
+
+            //create a try/catch that will call the .parse for this class
+            //if the parsing is successful, we will set the out variable
+            //  to the parsed instance and change the valid flag to true
+            //if the parsing is not successful, we will set the out
+            //  variable to null and not change the valid flag
+
+            try
+            {
+                result = Parse(text);
+                valid = true;
+            }
+            catch
+            {
+                result = null;
+            }
+
+            return valid;
+        }
     }
 }

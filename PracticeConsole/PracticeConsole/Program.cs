@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using PracticeConsole.Data;
 using System.IO;    //File IO
+using System.Text.Json;
 //using static System.Console; //fully qualified namespace
 
 namespace PracticeConsole
@@ -18,7 +19,38 @@ namespace PracticeConsole
             PrintArray(inputArray, inputArray.Length, "File IO input array");
             CreateEmploymentData();
             ReadCSVFile();
+
+            //Json File IO
+            string pathname = SaveAsJson(me);
+            Person jsonPerson = ReadAsJson(pathname);
+            Console.WriteLine("\n Data from JSON file\n");
+            DisplayPerson(jsonPerson);
         }
+
+        public static string SaveAsJson(Person me)
+        {
+            string filename = $"{me.LastName}.json";
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                WriteIndented = true, // makes it look nice
+                IncludeFields = true  
+            };
+            string jsonstring = JsonSerializer.Serialize<Person>(me, options);
+            File.WriteAllText(filename, jsonstring);
+            return Path.GetFullPath(filename);
+
+        }
+
+         public static Person ReadAsJson(string pathname)
+        {
+            //get the texr fro the file
+            string jsonstring = File.ReadAllText(pathname);
+            //convert the text into the instance of the class
+            Person jsonperson = JsonSerializer.Deserialize<Person>(jsonstring);
+            return jsonperson;
+
+
+         }
                 
             
             public static int[] ReadArrayFile()
@@ -56,22 +88,29 @@ namespace PracticeConsole
                 Employment anEmployment = null;
                 foreach (string item in fileinput)
                 {
-                    //PArse the record line into teh serperate values of an 
-                    //Employment instance
-                    //using the same concept of int.Parse, let us create
-                    //a .Parse for our developer defined data type
-                    //input will be a string
-                    //output will be an instance of employment
-                    //because we are using classname.method the methog will
-                    //be a static method within the specific classname
+                //PArse the record line into teh serperate values of an 
+                //Employment instance
+                //using the same concept of int.Parse, let us create
+                //a .Parse for our developer defined data type
+                //input will be a string
+                //output will be an instance of employment
+                //because we are using classname.method the methog will
+                //be a static method within the specific classname
 
-                    //employments.Add(Employment.Parse(item));
+                //employments.Add(Employment.Parse(item));
 
-                    anEmployment = Employment.Parse(item);
-                    employments.Add(anEmployment);
-                }
+                    if (Employment.TryParse(item, out anEmployment))
+                    {
+                        employments.Add(anEmployment);
+                    }
+                    else
+                    {
+                        badRecordCount++;
+                    }
+                }    
+                
 
-                Console.WriteLine($"Lines read: {employments.Count}");
+                Console.WriteLine($"Lines read: good : {employments.Count} bad: {badRecordCount}");
                 foreach(var line in employments)
                 {
                     Console.WriteLine($"{line.ToString()}");
