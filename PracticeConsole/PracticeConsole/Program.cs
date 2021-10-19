@@ -14,17 +14,18 @@ namespace PracticeConsole
         static void Main(string[] args)
         {
 
-            ArrayReview();
+            //Person me = ArrayReview();
+            //DisplayPerson(me);
             int[] inputArray = ReadArrayFile();
             PrintArray(inputArray, inputArray.Length, "File IO input array");
             CreateEmploymentData();
             ReadCSVFile();
 
             //Json File IO
-            string pathname = SaveAsJson(me);
-            Person jsonPerson = ReadAsJson(pathname);
+            //string pathname = SaveAsJson(me);
+            //Person jsonPerson = ReadAsJson(pathname);
             Console.WriteLine("\n Data from JSON file\n");
-            DisplayPerson(jsonPerson);
+            //DisplayPerson(jsonPerson);
         }
 
         public static string SaveAsJson(Person me)
@@ -43,7 +44,7 @@ namespace PracticeConsole
 
          public static Person ReadAsJson(string pathname)
         {
-            //get the texr fro the file
+            //get the text from the file
             string jsonstring = File.ReadAllText(pathname);
             //convert the text into the instance of the class
             Person jsonperson = JsonSerializer.Deserialize<Person>(jsonstring);
@@ -83,6 +84,7 @@ namespace PracticeConsole
 
             public static void ReadCSVFile()
             {
+            int badRecordCount = 0;
                 string[] fileinput = File.ReadAllLines(CSVFileName);
                 List<Employment> employments = new List<Employment>();
                 Employment anEmployment = null;
@@ -220,7 +222,7 @@ namespace PracticeConsole
             //a value to the Level property
             //Instead use the method provided which will assign the
             //given arguemnt value to the Level property internally
-            job1.SetEmployeeResonsibility(SupervisoryLevel.TeamLeader);
+           // job1.SetEmployeeResonsibility(SupervisoryLevel.TeamLeader);
             job1.Years = 7.4;
 
             jobs.Add(job1); //add to the jobs List<T> where T is employmwnt
@@ -254,7 +256,7 @@ namespace PracticeConsole
                 
 
             };
-            job1.SetEmployeeResonsibility(SupervisoryLevel.Owner);
+           // job1.SetEmployeeResonsibility(SupervisoryLevel.Owner);
             jobs.Add(job1); //add to the jobs List<T> where T is employmwnt
 
           
@@ -295,9 +297,9 @@ namespace PracticeConsole
             //using a readonly nonstatic class which can hold data
             //at the time of instantion you must supply all required value data
             //to your new instance
-            EmploymentReadOnly altJob = new EmploymentReadOnly("Art Director",
-                SupervisoryLevel.Supervisor, 4.5);
-            Console.WriteLine($"\n\n*****\nEmployment ReadOnly\n\t{altJob.Title},{altJob.Level},{altJob.Years}\n*****\n");
+            //EmploymentReadOnly altJob = new EmploymentReadOnly("Art Director",
+               // SupervisoryLevel.Supervisor, 4.5);
+           // Console.WriteLine($"\n\n*****\nEmployment ReadOnly\n\t{altJob.Title},{altJob.Level},{altJob.Years}\n*****\n");
 
             Employment badjob;
             Person badperson;

@@ -18,6 +18,8 @@ namespace PracticeConsole.Data
         //can contain other structs
         //can have public, public readonly, private fields 
         // properties - jsut taking in data and storing it
+
+
         public readonly int Number;
         public string Address1;
         public string Address2;

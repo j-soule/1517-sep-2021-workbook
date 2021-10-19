@@ -7,7 +7,7 @@ using PracticeConsole.Data;
 
 namespace PracticeConsole.Data
 {
-    class EmploymentReadOnly
+  /*  class EmploymentReadOnly
     {
 
         public readonly string Title;
