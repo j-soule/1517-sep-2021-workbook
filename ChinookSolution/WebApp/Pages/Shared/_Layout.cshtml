@@ -12,22 +12,27 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">          
             <ul>
                 <li>
+                    <a asp-area="" asp-page="/Index">
+                        <img src="~/img/ChinookMusicMenuLogo.jpg" alt="logo image" 
+                             title="go to Home"/>
+                    </a>
+                </li>
+                <li>
                     <a asp-area="" asp-page="/Index">Home</a>
                 </li>
                 @*this is the structure for a submenu (drop down menu)*@
                 <li>
                     <span>Samples</span>
-                        <ul>
-                            <li>
-                                <a asp-area="" asp-page="/BasicDataMovement">Basics</a>
-                            </li>
-                            <li>
-                                <a asp-area="" asp-page="/ArtistQuery">Query Artist</a>
-                            </li>
-                        </ul>
-                    
-                </li>
+                    <ul>
+                        <li>
+                            <a asp-area="" asp-page="/BasicDataMovement">Basics</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-page="/ArtistQuery">Query Artist</a>
+                        </li>
+                    </ul>
 
+                </li>
                 <li>
                     <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                 </li>
@@ -37,6 +42,7 @@
     <div >
         <main role="main" class="pb-3">
             @RenderBody()
+
         </main>
     </div>
 
