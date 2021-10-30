@@ -17,7 +17,7 @@ namespace WebApp.Pages
         [TempData]
 
         public string FeedbackMessage { get; set; }
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
 
         public int? id { get; set; } //? makes it a nullable feed, it doesnt have to exist
 
@@ -73,10 +73,13 @@ namespace WebApp.Pages
            // string buttonvalue = Request.Form["theButton"];
             FeedbackMessage = $"You pressed the the A button, input was {id}";
             //the RedirectToPage will cause the OnGet to execute
-            return RedirectToPage();
+            // we will crearte an anonymous obj and assign the desired value
+            //  to the obj
+            return RedirectToPage(new { id = id }); //new returns an instance of an obj {dynamically created obj}
 
         }
 
+        //these method replace having to do a bunch of if/else logic
 
         public IActionResult OnPostBButton()
         {
@@ -84,7 +87,7 @@ namespace WebApp.Pages
             // string buttonvalue = Request.Form["theButton"];
             FeedbackMessage = $"You pressed the B button, input was {id}";
             //the RedirectToPage will cause the OnGet to execute
-            return RedirectToPage();
+            return RedirectToPage(new { id = id});
 
         }
     }
