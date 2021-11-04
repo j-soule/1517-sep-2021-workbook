@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-#region
+#region Additional Namespaces
 using Microsoft.EntityFrameworkCore;
 using WestWindSystem.Entities;
 #endregion
+
 namespace WestWindSystem.DAL
 {
-    internal class WestWindContext
+    internal class WestWindContext:DbContext
+
     {
+        public WestWindContext()
+        {
+
+        }
         //options? thingslike DataBase Provider(MySQL | Oracle)
         //What is the connection string?
         //what type of authorization

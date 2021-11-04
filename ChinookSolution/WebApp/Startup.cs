@@ -8,7 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+#region Additional Namespaces
+//using WestWindSystem;
+//using Microsoft.Entity
+#region
 namespace WebApp
 {
     public class Startup
@@ -23,6 +26,16 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //this method is used to register your BLL classes so that the web application can use them 
+            //to minimize possible damage to this fileby my own typing anf editing
+            //we can setup a method else that can be maintained/altered without fear
+            //of damaging code within this file
+            //this method will be an"extension method" attached to the IServicesCollection
+            //class
+            services.AddBackendDependancies(options =>
+                            options.UseSqlServer(
+                                   Configuration.GetConnectionString("WWDB")));
+
             services.AddRazorPages();
         }
 

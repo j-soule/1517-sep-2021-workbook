@@ -20,7 +20,7 @@ namespace WebApp
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>(); //where is my information to make the webpage .. in startup
                 });
     }
 }
