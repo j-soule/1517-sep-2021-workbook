@@ -9,18 +9,18 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">          
+        <nav>
             <ul>
                 <li>
                     <a asp-area="" asp-page="/Index">
-                        <img src="~/img/ChinookMusicMenuLogo.jpg" alt="logo image" 
-                             title="go to Home"/>
+                        <img src="~/img/ChinookMusicMenuLogo.jpg" alt="logo image"
+                             title="go to Home" />
                     </a>
                 </li>
                 <li>
                     <a asp-area="" asp-page="/Index">Home</a>
                 </li>
-                @*this is the structure for a submenu (drop down menu)*@
+                @* this is the structure for a submenu (drop down menu) *@
                 <li>
                     <span>Samples</span>
                     <ul>
@@ -28,32 +28,31 @@
                             <a asp-area="" asp-page="/BasicDataMovement">Basics</a>
                         </li>
                         <li>
-                            <a asp-area="" asp-page="/RegionQuery">Query Region</a>
+
+                            <a asp-area="" asp-page="/RegionQueryOne">Primary Key Query</a>
+                        </li>
+                        <li>
+
+                            <a asp-area="" asp-page="/PartialFilterSearch"
+                               asp-route-searcharg="">Table Result Query</a>
                         </li>
                     </ul>
-
                 </li>
                 <li>
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                    <a asp-area="" asp-page="/Privacy">Privacy</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <div >
+    <div>
         <main role="main" class="pb-3">
             @RenderBody()
-
         </main>
     </div>
-
     <footer>
-        
-            &copy; 2021 - Jennifer Soule All rights reserved - <a asp-area="" asp-page="/Privacy">Privacy</a>
-      
+        &copy; 2021 - Jennifer Soule NAIT CPSC1517 All rights reserved - <a asp-area="" asp-page="/Privacy">Privacy</a>
     </footer>
-
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

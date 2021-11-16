@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 #region Additional Namespaces
 using WestWindSystem;
 using Microsoft.EntityFrameworkCore;
-#region
+#endregion
 namespace WebApp
 {
     public class Startup
@@ -33,7 +33,7 @@ namespace WebApp
             //of damaging code within this file
             //this method will be an"extension method" attached to the IServicesCollection
             //class
-            services.AddBackendDependancies(options =>
+            services.AddBackendDependencies(options =>
                             options.UseSqlServer(
                                    Configuration.GetConnectionString("WWDB")));
 

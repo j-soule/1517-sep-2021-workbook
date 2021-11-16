@@ -15,7 +15,7 @@ using WestWindSystem.BLL;
 namespace WestWindSystem
 {
     //extension methods must belong to a static class
-    class StartupExtensions
+    public static class StartupExtensions
     {
         //you can add any extension for any class that exists in C#
 
@@ -24,7 +24,7 @@ namespace WestWindSystem
         {
             //the first parameter of your method referes to the class you are attempting to 
             //   extend
-            //syntac for the firat parameter:  this theclassbeingextend parametername
+            //syntac for the first parameter:  this theclassbeingextend parametername
 
             //any additinal arguments exsiting on the callin statement follow the 
             //   first parameter separated by commas

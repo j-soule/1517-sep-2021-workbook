@@ -18,7 +18,7 @@ namespace WestWindSystem.BLL
         private readonly WestWindContext _context;
 
         //i need a constructor of this class to initalize  my instance of WestWindContext
-        internal WestWindSystem(WestWindContext context)
+        internal WestWindServices(WestWindContext context)
         {
             _context = context;
         }

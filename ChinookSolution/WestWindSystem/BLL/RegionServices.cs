@@ -4,24 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-#region Addional Namspaces
+#region Additional Namespaces
 using WestWindSystem.DAL;
 using WestWindSystem.Entities;
 #endregion
+
+
 namespace WestWindSystem.BLL
 {
-   public class RegionServices
+    public class RegionServices
     {
-        #region COntext variable and constructor
+        #region Context variable & constructor
+        private readonly WestWindContext _context;
 
-        private readonly RegionServices _context;
-        
-
-        internal RegionServices (WestWindContext context)
+        internal RegionServices(WestWindContext context)
         {
             _context = context;
         }
-
         #endregion
 
         #region Queries
@@ -32,35 +31,29 @@ namespace WestWindSystem.BLL
             IEnumerable<Region> info = _context.Regions
                                                .OrderBy(anyRegionRecord =>
                                                         anyRegionRecord.RegionDescription);
-
             return info.ToList();
         }
 
-        //get the region record based onthe RegionID value parameter
+        //get the Region record based on the RegionId value parameter
         //return is an instance of Region OR a null value
-        public Region Region_GetByID(in regionid)
+        public Region Region_GetByID(int regionid)
         {
             Region info = _context.Regions
                                   .Where(x => x.RegionID == regionid)
                                   .FirstOrDefault();
-
             return info;
         }
 
-        //get a set of region records that match a string of RegionDescription characters
+        //get a set of Region records that match a string of RegionDescription characters
         //typically referred to as a partial lookup
-        //this is usally on any field that is not the pkey
-        //this will return 0, 1 or more records that match the filter test (.where)
-
+        //this is usually on any field that is not the pkey
+        //this will return 0, 1 or more records that match the filter test (.Where)
         public List<Region> Region_GetByPartialDescription(string partialdescription)
         {
             IEnumerable<Region> info = _context.Regions
-                                               .Where(x => x.RegionDescription.Contains
-                                               (partialdescription));
-
+                                               .Where(x => x.RegionDescription.Contains(partialdescription));
             return info.ToList();
         }
-
         #endregion
     }
 }
