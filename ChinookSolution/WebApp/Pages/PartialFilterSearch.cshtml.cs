@@ -37,8 +37,29 @@ namespace WebApp.Pages
 
         public void OnGet()
         {
+            //check to see if you have an arguement value
+            if (!string.IsNullOrWhiteSpace(searcharg))
+            {
+                //send teh arguemnt value to the bacckend to obtain your data
+                //the data will be placed in a property that will be bound to 
+                //the output on the web page
+                regionInfo = _regionservices.Region_GetByPartialDescription(searcharg);
+            }
 
 
+        }
+
+        public IActionResult OnPostByName()
+        {
+            //check that a vale was really place in the input control
+            //if not: give feedback requiring a value
+            //retuen the entered vale to OnGet using the Post Redirect Get Technique
+            if (string.IsNullOrWhiteSpace(searcharg))
+            {
+                FeedbackMessage = "Enter a region description before searching";
+            }
+
+            return RedirectToPage(new { searcharg = searcharg });
         }
     }
 }

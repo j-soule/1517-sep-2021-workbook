@@ -24,8 +24,8 @@ namespace WestWindSystem.BLL
         #endregion
 
         #region Queries
-        //get all the records of the sql Region Table
-        //return as a List<T>
+        //get ALL the records of the sql Region Table
+        //return as a List<T> //need for exercise 5
         public List<Region> Region_List()
         {
             IEnumerable<Region> info = _context.Regions
@@ -34,7 +34,7 @@ namespace WestWindSystem.BLL
             return info.ToList();
         }
 
-        //get the Region record based on the RegionId value parameter
+        //get a Region record based on the RegionId value parameter
         //return is an instance of Region OR a null value
         public Region Region_GetByID(int regionid)
         {

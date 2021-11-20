@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Partial String Query";
 }
-<h1>PArtial string query resulting in a table display</h1>
+<h1>Partial string query resulting in a table display</h1>
 <p>@Model.FeedbackMessage</p>
 <form method="post">
     <label>
@@ -13,10 +13,40 @@
     <button type="submit" asp-page-handler="ByName">Fetch By Name</button>
 
     @if(Model.searcharg != null)
-        if (Model.regionInfo == null && Model.searcharg.Length > 0)
+        if (Model.regionInfo.Count() == 0 && Model.searcharg.Length > 0)
         {
             <p style="color:firebrick;font-weight:bold">
                 No region found for this region id.
             </p>
+        }
+        else
+        {
+<table>
+    <thead>
+    <th>ID</th>
+    <th>Description</th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.regionInfo)
+        {
+            <tr>
+                <td>@item.RegionID</td>
+                <td> <a href="/TerritoriesCRUD/@item.RegionID">
+                     @item.RegionDescription
+                     </a>
+                </td>
+               
+            </tr>
+        }
+    </tbody>
+
+            @*<tfoot>
+            optional are
+            used for summary informtaion
+                      paging
+                      input of new records in a database table
+            </tfoot>*@
+
+</table>
         }
 </form>
