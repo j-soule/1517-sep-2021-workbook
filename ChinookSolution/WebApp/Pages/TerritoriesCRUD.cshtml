@@ -1,5 +1,62 @@
 ﻿@page "{regionid?}"
 @model WebApp.Pages.TerritoriesCRUDModel
-@{      ViewData["Title"] = "Territories CRUD";
-}
-<h1>Territory Query</h1>
+@{
+    ViewData["Title"] = "Territory CRUD";
+ }
+
+<h1>Territory CRUD</h1>
+<blockquote>Territories for region: @Model.regionid</blockquote>
+@if (Model.regionid != null)
+    if(Model.territoryInfo.Count() == 0)
+    {
+        <p style="color:firebrick;font-weight:bold">
+            No territories found for the region.
+        </p>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Region</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.territoryInfo)
+                {
+                <tr>
+                    <td>@item.TerritoryID</td>
+                    <td>@item.TerritoryDescription</td>
+                    <td>@item.RegionID</td>
+                </tr>
+                }
+                </tbody>
+            <tfoot>
+                @*optional area used for summary information, paging, input of new records
+                    in a database table*@
+                <tr>
+                    <td colspan="3">
+                        @{ 
+                            foreach(var pageRef in Model.Pager)
+                            {
+                                if (pageRef == Model.Pager.CurrentPage) 
+                                { 
+                                    <b>@pageRef.Text</b>
+                                }
+                                else
+                                {
+                                    <a title="Page @pageRef.Page"
+                                       asp-page="/TerritoriesCRUD"
+                                       asp-route-currentpage="@pageRef.Page">
+                                        @pageRef.Text
+                                    </a>
+                                }
+                            }
+                        }
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    }
