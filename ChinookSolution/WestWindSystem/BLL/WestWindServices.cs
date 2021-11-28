@@ -15,10 +15,10 @@ namespace WestWindSystem.BLL
     public class WestWindServices
     {
         //I need an instance of the WestWindContext class
-        private readonly WestWindContext _context;
+        private readonly WestwindContext _context;
 
         //i need a constructor of this class to initalize  my instance of WestWindContext
-        internal WestWindServices(WestWindContext context)
+        internal WestWindServices(WestwindContext context)
         {
             _context = context;
         }

@@ -24,14 +24,14 @@
                 //to retain the selection you need to specific a row to be
                 //  the selected option
                 //this is done with the selected attribute on the value
-                if (item.RegionID == Model.regionid)
+                if (item.RegionId == Model.regionid)
                 {
-                    <option value="@item.RegionID" selected>@item.RegionDescription</option>
+                    <option value="@item.RegionId" selected>@item.RegionDescription</option>
 
                 }
                 else
                 {
-                    <option value="@item.RegionID">@item.RegionDescription</option>
+                    <option value="@item.RegionId">@item.RegionDescription</option>
                 }
             }
         </select>
@@ -41,7 +41,7 @@
     <button type="submit" asp-page-handler="BySelection">Fetch select region</button>
     <label>
         RegionId:
-        <input type="text" readonly asp-for="regionInfo.RegionID" />
+        <input type="text" readonly asp-for="regionInfo.RegionId" />
     </label>
     <label>
         Description:

@@ -14,9 +14,9 @@ namespace WestWindSystem.BLL
     public class TerritoryServices
     {
         #region Context variable & constructor
-        private readonly WestWindContext _context;
+        private readonly WestwindContext _context;
 
-        internal TerritoryServices(WestWindContext context)
+        internal TerritoryServices(WestwindContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace WestWindSystem.BLL
         public List<Territory> Territory_GetForRegion(int regionid, int pagenumber, int pagesize, out int totalcount)
         {
             IEnumerable<Territory> info = _context.Territories
-                                               .Where(x => x.RegionID == regionid)
+                                               .Where(x => x.RegionId == regionid)
                                                .OrderBy(x => x.TerritoryDescription);
             //determine the total collection size of your query
             totalcount = info.Count();

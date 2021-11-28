@@ -33,7 +33,7 @@ namespace WestWindSystem
             //add the context class of your application library (DAL) to the service
             //  collection
             //pass in the connection string options
-            services.AddDbContext<WestWindContext>(options);
+            services.AddDbContext<WestwindContext>(options);
 
 
 
@@ -46,7 +46,7 @@ namespace WestWindSystem
             services.AddTransient<WestWindServices>((serviceProvider) =>
             {
                 //get the dbcontext class
-                var context = serviceProvider.GetRequiredService<WestWindContext>();
+                var context = serviceProvider.GetRequiredService<WestwindContext>();
                 //create an instance of WestWindServices supplying the reference to
                 //   the context class
                 return new WestWindServices(context);
@@ -55,7 +55,7 @@ namespace WestWindSystem
             services.AddTransient<RegionServices>((serviceProvider) =>
             {
                
-                var context = serviceProvider.GetRequiredService<WestWindContext>();
+                var context = serviceProvider.GetRequiredService<WestwindContext>();
              
                 return new RegionServices(context);
             });
@@ -63,7 +63,7 @@ namespace WestWindSystem
             services.AddTransient<TerritoryServices>((serviceProvider) =>
             {
 
-                var context = serviceProvider.GetRequiredService<WestWindContext>();
+                var context = serviceProvider.GetRequiredService<WestwindContext>();
 
                 return new TerritoryServices(context);
             });

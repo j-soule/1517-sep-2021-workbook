@@ -15,9 +15,9 @@ namespace WestWindSystem.BLL
     public class RegionServices
     {
         #region Context variable & constructor
-        private readonly WestWindContext _context;
+        private readonly WestwindContext _context;
 
-        internal RegionServices(WestWindContext context)
+        internal RegionServices(WestwindContext context)
         {
             _context = context;
         }
@@ -39,7 +39,7 @@ namespace WestWindSystem.BLL
         public Region Region_GetByID(int regionid)
         {
             Region info = _context.Regions
-                                  .Where(x => x.RegionID == regionid)
+                                  .Where(x => x.RegionId == regionid)
                                   .FirstOrDefault();
             return info;
         }
