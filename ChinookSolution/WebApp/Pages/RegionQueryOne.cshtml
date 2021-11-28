@@ -10,7 +10,7 @@
         Enter Region ID:
         <input type="number" asp-for="regionid" placeholder="enter your region id number" />
     </label>
-    <button type="submit">Fetch By Id</button>
+    @*<button type="submit">Fetch By Id</button>*@
     <button type="submit" asp-page-handler="ByID">Fetch By Id</button>
 
     <label>
@@ -35,9 +35,10 @@
                 }
             }
         </select>
+
+
     </label>
     <button type="submit" asp-page-handler="BySelection">Fetch select region</button>
-
     <label>
         RegionId:
         <input type="text" readonly asp-for="regionInfo.RegionID" />
@@ -52,4 +53,38 @@
             No region found for this region id.
         </p>
     }
+    @*@if (Model.regionid != null)
+        if (Model.RegionList.Count() == 0 && Model.regionid > 0)
+        {
+            <p style="color:firebrick;font-weight:bold">
+                No region found for this region id.
+            </p>
+        }
+        else
+        {
+            <table>
+                <thead>
+                <th>ID</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.RegionList)
+                    {
+                        <tr>
+                            <td>@item.RegionID</td>
+                            <td>
+                                <a href="/TerritoriesCRUD/@item.RegionID">
+                                    @item.RegionDescription
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+
+
+            </table>*@
+    }
+
 </form>

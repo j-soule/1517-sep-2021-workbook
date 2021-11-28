@@ -39,12 +39,6 @@ namespace WebApp.Pages
         #endregion
 
       
-
-
-        
-
-
-
         public void OnGet()
         {
 

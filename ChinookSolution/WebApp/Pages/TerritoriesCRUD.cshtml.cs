@@ -66,5 +66,10 @@ namespace WebApp.Pages
                 Pager = new Paginator(totalcount, current);
             }
         }
+
+        public IActionResult OnPost()
+        {
+            return Redirect("/CRUDPage");
+        }
     }
 }

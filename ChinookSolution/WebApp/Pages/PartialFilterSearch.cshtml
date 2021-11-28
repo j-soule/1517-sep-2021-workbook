@@ -21,32 +21,27 @@
         }
         else
         {
-<table>
-    <thead>
-    <th>ID</th>
-    <th>Description</th>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.regionInfo)
-        {
-            <tr>
-                <td>@item.RegionID</td>
-                <td> <a href="/TerritoriesCRUD/@item.RegionID">
-                     @item.RegionDescription
-                     </a>
-                </td>
+            <table>
+                <thead>
+                <th>ID</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.regionInfo)
+                    {
+                        <tr>
+                            <td>@item.RegionID</td>
+                            <td> <a href="/TerritoriesCRUD/@item.RegionID">
+                                 @item.RegionDescription
+                                 </a>
+                            </td>
                
-            </tr>
-        }
-    </tbody>
+                        </tr>
+                    }
+                </tbody>
 
-            @*<tfoot>
-            optional are
-            used for summary informtaion
-                      paging
-                      input of new records in a database table
-            </tfoot>*@
+          
 
-</table>
+            </table>
         }
 </form>
