@@ -11,13 +11,27 @@ namespace WestWindSystem.Entities
 {
     public partial class Territory
     {
-        [Key]
-        [Column("TerritoryID")]
-        [StringLength(20)]
+        private string _TerritoryDescription;
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        
+        [StringLength(20, MinimumLength = 1, ErrorMessage = "Territory Id is limit to 20 characters")]
         public string TerritoryId { get; set; }
         [Required]
         [StringLength(50)]
-        public string TerritoryDescription { get; set; }
+        //[Required(ErrorMessage = "Territory Desccription is required")]
+        //[StringLength(50, MinimumLength = 1, ErrorMessage = "Territory Description is limit to 50 characters")]
+        public string TerritoryDescription
+        {
+            get 
+            {
+                //return _TerritoryDescription.Trim();
+                return _TerritoryDescription != null ? _TerritoryDescription.Trim() : null;
+            }
+            set 
+            {
+                _TerritoryDescription = value;
+            }
+        }
         [Column("RegionID")]
         public int RegionId { get; set; }
 

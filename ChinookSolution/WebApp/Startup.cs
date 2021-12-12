@@ -37,6 +37,7 @@ namespace WebApp
                             options.UseSqlServer(
                                    Configuration.GetConnectionString("WWDB")));
 
+
             services.AddRazorPages();
         }
 

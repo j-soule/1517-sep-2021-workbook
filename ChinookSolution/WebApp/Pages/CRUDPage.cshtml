@@ -1,6 +1,94 @@
 ﻿@page "{territoryid?}"
 @model WebApp.Pages.CRUDPageModel
-@{         
+@{
     ViewData["Title"] = "CRUD Page";
 }
+
+@section OptHead{
+    <partial name="_CustomCSS" />
+}
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
 <h1>Record maintenance for territories</h1>
+
+
+@if (Model.HasFeedback)
+{
+    //<blockquote>@Model.FeedbackMessage</blockquote>
+    <blockquote class="success">@Model.FeedbackMessage</blockquote>
+}
+@if (Model.HasError)
+{
+    //<blockquote>@Model.ErrorMessage</blockquote>
+    <blockquote class="danger">@Model.ErrorMessage</blockquote>
+}
+
+<form method="post">
+    @* TerritoryID is a non identity primary key
+        If the event is an update or remove then the existing pkey will be
+            shown and NOT allowed to be changed
+        If the event is an add then the pkey must be able to be entered by
+            the user, thus the field needs to be changable
+        Validation for type=""number":
+          by default the step unit is 1 (a whole number)
+          for any other step unit you need to explicitly state the step
+                example $,  step="0.01"
+        Range:
+        min="value" max="value" (can be used independently
+
+        A Required field
+        key word required)
+    *@
+    <label>
+        Territory ID:
+        @if (Model.territoryInfo != null)
+        {
+            <input type="text" readonly asp-for="territoryInfo.TerritoryId" />
+        }
+        else
+        {
+            <input type="text" asp-for="territoryInfo.TerritoryId" />
+            <span asp-validation-for="territoryInfo.TerritoryId"></span>
+        }
+    </label>
+    <label>
+        Description:
+        <input type="text" asp-for="territoryInfo.TerritoryDescription" />
+        <span asp-validation-for="territoryInfo.TerritoryDescription"></span>
+    </label>
+    <label>
+        Region:
+        <select asp-for="territoryInfo.RegionId">
+            <option value="0">select ...</option>
+            @foreach (var item in Model.regionInfo)
+            {
+                <option value="@item.RegionId">@item.RegionDescription.</option>
+            }
+        </select>
+    </label>
+    @if (Model.territoryInfo != null)
+    {
+        <button type="submit" asp-page-handler="New" disabled>Save New</button>
+        <button type="submit" asp-page-handler="Update">Update</button>
+        <button type="submit" asp-page-handler="Remove"
+                onclick="return confirm('Are you sure you wish to remove the territory?')">
+            Remove
+        </button>
+        <button type="submit" asp-page-handler="Clear" formnovalidate>Clear</button>
+        <button type="submit" asp-page-handler="Back" formnovalidate>New Search</button>
+    }
+    else
+    {
+        <button type="submit" asp-page-handler="New">Save New</button>
+        <button type="submit" asp-page-handler="Update" disabled>Update</button>
+        <button type="submit" asp-page-handler="Remove" disabled
+                onclick="return confirm('Are you sure you wish to remove the territory?')">
+            Remove
+        </button>
+        <button type="submit" asp-page-handler="Clear" formnovalidate>Clear</button>
+        <button type="submit" asp-page-handler="Back" formnovalidate>New Search</button>
+    }
+</form> 
