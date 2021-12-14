@@ -70,7 +70,7 @@ namespace WestWindSystem.BLL
             //.Find(pkeyvalue) is a method that will use the incoming value and
             //      by default check the pkey field of each record on the database
 
-            var exist = _context.Territories.Find(item.TerritoryID);
+            var exist = _context.Territories.Find(item.TerritoryId);
             if (exist != null)
             {
                 throw new Exception("Territory ID is already in use. Choose a different ID value");
